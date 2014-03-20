@@ -1,0 +1,149 @@
+html { height: 100% }
+body { height: 100%; margin: 0px; padding: 0px }
+
+/*
+ * Title
+ */
+.title {
+  width: 50%;
+  height: Auto;
+}
+
+/*
+ * Map
+ */
+/* Some work to ensure google map gets a height */
+.container  {
+  height: 95%;
+}
+.row, .col-lg-7 {
+  height: 100%;
+}
+.my_livemap {
+  width: 100%;
+  height: 100%;
+}
+#my_livemap, #my_mapcanvas {
+  margin-bottom: 1.5em;
+}
+
+
+/*
+ * Control panel
+ */
+.geolocation_status {
+  float: right;
+  color: #FF0000;
+  font-style: italic;
+  opacity: .5;
+}
+
+/* text feedback */
+.control_panel {
+  padding: 8px;
+  width: 100%;
+  background-color: lightgray;
+  display: inline-block;
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+}
+
+/* align text almost like a table */
+.control_panel * {
+  float: left;
+  width: 33%;
+  text-align: center;
+}
+.control_label {
+  color: darkgreen;
+}
+.control_content {
+  font-size:large;
+}
+
+/* buttons to zoom map */
+.zoomers_panel {
+  text-align: right; /* images align right */
+}
+.zoomers {
+  padding: 4px;
+}
+
+/* button effects */
+.fade {
+  opacity: .75;
+  transition: opacity .25s ease-in-out;
+  -moz-transition: opacity .25s ease-in-out;
+  -webkit-transition: opacity .25s ease-in-out;
+}
+.fade:hover {
+  opacity: 1;
+  background-color: gray;
+  -webkit-border-radius: 500;
+  -moz-border-radius: 500;
+  border-radius: 500px;
+  transition: background-color .25s ease-in-out;
+  -moz-transition: background-color .25s ease-in-out;
+  -webkit-transition: background-color .25s ease-in-out;
+}
+.round_background {
+  background-color: lightgray;
+  -webkit-border-radius: 500;
+  -moz-border-radius: 500;
+  border-radius: 500px;
+}
+.alert_button {
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  opacity: .8;
+  color: #000000;
+  font-size: 20px;
+  background: #919f49;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  height: 3em;
+  line-height: 2em;
+  width: 100%;
+  text-align:center;
+  margin-top: .5em;
+}
+.alert_button:hover {
+  opacity: 1;
+  text-decoration: none;
+}
+.alert_message {
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  height: 3em;
+  width: 100%;
+  color: #FFFFFF;
+  background-color: #FF0000;
+  font-size: 20px;
+  line-height: 3em;
+  text-align: center;
+  margin-top: .5em;
+}
+.hide_alert {
+  height: 0px;
+}
+
+/*
+ * Footer
+ */
+#footer {
+  width: 100%;
+  height: 1.5em;
+}
+.author {
+  font-style: italic;
+  padding: 0 1em;
+}
+#author_name {
+  float: left;
+}
+#author_link {
+  float: right;
+}

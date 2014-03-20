@@ -1,0 +1,15 @@
+<!-- Livemap, see livemap.js. -->
+<!-- Google Maps API -->
+<head>
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?libraries=geometry&amp;sensor=false"></script>
+  <!-- <safari_fix> for blank map (http://stackoverflow.com/questions/226131/how-to-disable-phone-number-linking-in-mobile-safari/227238#227238) -->
+  <meta name="format-detection" content="telephone=no">
+  <!-- /<safari_fix> -->
+</head>
+
+<!-- Template for map that won't blink on updates -->
+<template name="livemap">
+  {{#constant}}
+    <div class=livemap_mapcanvas>{{livemap ".livemap_mapcanvas"}}</div>
+  {{/constant}}
+</template>

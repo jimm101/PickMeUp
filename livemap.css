@@ -1,0 +1,9 @@
+/* Livemap, see livemap.js. */
+.livemap_mapcanvas {
+  float: left;
+  background: transparent url(images/loading_the_map.png) no-repeat center center;
+  background-size: 50% Auto;
+  background-color: lightgray;
+  width: 100%;
+  height: 100%;
+}

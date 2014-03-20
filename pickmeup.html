@@ -1,0 +1,90 @@
+<!-- pickmeup webapp layout -->
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PickMeUp!</title>
+  <link rel="shortcut icon" href="images/favicon.ico">
+</head>
+
+<!-- main tempate, used by all webapp pages -->
+<template name="main">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class=controls>
+          {{yield}}
+        </div>
+      </div>
+      <div class="col-lg-1">
+        <div>
+          {{> map_buttons}}
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <div class=my_livemap>
+          {{> livemap}}
+         </div>
+      </div>
+    </div> <!-- /row -->
+    <div id=footer>
+      <div class=container>
+         {{> footer}}
+        </div>
+      </div>
+  </div>
+</template>
+
+<!-- layout if you're on the bus -->
+<template name="bus_controls">
+  {{> geolocation}}
+  {{> title}}
+  {{> control_panel}}
+  <button type="button" class="alert_button">{{alert_button_label}}</button>
+  <div class="alert_message {{alert_hide}}">{{alert_message}}</div>
+  {{{alert}}}
+</template>
+
+<!-- layout if you're picking up the bus rider -->
+<template name="home_controls">
+  {{> title}}
+  {{> control_panel }}
+  <button type="button" class="alert_button">{{alert_button_label}}</button>
+  <div class="alert_message {{alert_hide}}">{{alert_message}}</div>
+</template>
+
+<!-- logo -->
+<template name="title">
+  <img class=title src="images/logo.png" alt="PickMeUp!"/>
+</template>
+
+<!-- text feedback -->
+<template name="control_panel">
+  <div class="geolocation_status">{{geolocation_status}}</div>
+  <div class="control_panel">
+    <div class="control_content">{{speed}}</div>
+    <div class="control_content">{{estimated_time}}</div>
+    <div class="control_content">{{alert_time}}</div>
+    <div class="control_label">current speed</div>
+    <div class="control_label">estimated time</div>
+    <div class="control_label">time until alert</div>
+  </div>
+</template>
+
+<!-- button to notify of alert immediately -->
+<template name="alert_button">
+
+</template>
+
+<!-- icons for zooming the map around -->
+<template name="map_buttons">
+  <div class=zoomers_panel>
+    <img class="zoomers round_background" id=zoom_out_button src="images/red-blue-dots.png" alt="destination"/>
+    <img class="zoomers fade" id=dest_button src="images/blue-dot.png" alt="destination"/>
+    <img class="zoomers fade" id=bus_button src="images/red-dot.png" alt="bus"/>
+  </div>
+</template>
+
+<!-- credits -->
+<template name="footer">
+  <div class=author id=author_name>Jim McGowan</div>
+  <div class=author id=author_link><a href='https://github.com/jimm101'>https://github.com/jimm101</a></div>
+</template>
