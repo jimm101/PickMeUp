@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Pickmeup by jimm101</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Pickmeup</h1>
+        <h2>Meteor demo with geolocation and Google Maps.</h2>
+        <a href="https://github.com/jimm101/PickMeUp" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h2>
+<a name="pickmeup-meteor-demo" class="anchor" href="#pickmeup-meteor-demo"><span class="octicon octicon-link"></span></a>PickMeUp Meteor Demo</h2>
+
+<p>I built this demo app to evaluate Meteor.  You can skip to the <a href="#review_notes">Review Notes</a> below.</p>
+
+<h3>
+<a name="background" class="anchor" href="#background"><span class="octicon octicon-link"></span></a>Background</h3>
+
+<p>In a previous job I built something very similar to <a href="https://www.meteor.com/main">Meteor</a> using <a href="https://www.python.org/">Python</a> &amp; <a href="http://couchdb.apache.org/">CouchDB</a>.  I wanted to evaluate Meteor with something beyond a simple chat application, to see how easy it would be to cover some of the real-world use cases I hit before.  Meteor is full-stack, although you can swap out some of the parts as wrappers become available.</p>
+
+<h3>
+<a name="application-use-case" class="anchor" href="#application-use-case"><span class="octicon octicon-link"></span></a>Application Use Case</h3>
+
+<p>After work my wife picks me up from the bus stop.  I wanted an app to track where I was and notify her a few minutes before I reach the stop.  She should have a webapp that alerts her when I arrive, and I should be able to send my location from either my laptop, tablet or smartphone.</p>
+
+<h3>
+<a name="try-the-demo" class="anchor" href="#try-the-demo"><span class="octicon octicon-link"></span></a>Try the Demo</h3>
+
+<p>Meteor hosts meteor apps for free, so PickMeUp is on pickmeup.meteor.com and pickmeup.meteor.com/bus.</p>
+
+<p>PickMeUp two pages--a <a href="http://pickmeup.meteor.com/bus">bus rider view</a> is required, and the <a href="http://pickmeup.meteor.com/">pickup view</a> is optional.  Open both.</p>
+
+<p>Someone needs to share their location on the <a href="http://pickmeup.meteor.com/bus">bus rider view</a>, so if you don't see a map after a few seconds, tell you browser to allow your coordinates.  If you already see a map, don't share your location.</p>
+
+<p>The destination is hard-coded to <a href="http://www.magnoliabakery.com/">Magnolia Bakery</a> in New York City, not my real bus stop.</p>
+
+<p>The maps have markers for current location and destination, and the buttons outside the map control zoom.  These are separate for each view.</p>
+
+<p>The "send alert" and "send alert now" buttons manually toggle a simple alert notice.  This is synced between views.</p>
+
+<h3>
+<a name="approach" class="anchor" href="#approach"><span class="octicon octicon-link"></span></a>Approach</h3>
+
+<p>I used <a href="http://getbootstrap.com/">Bootstrap 3</a> to get easy mobile-first design, through the <a href="https://github.com/mangasocial/meteor-bootstrap-3">meteor-bootstrap-3 plugin</a>. (I had tried <a href="https://github.com/simison/bootstrap3-less">a plugin with Bootstrap 3 less</a>, but when it didn't immediately work, I used the other.)</p>
+
+<p><a href="https://github.com/EventedMind/iron-router">Iron Router</a> handles the multiple webapp views as different pages.</p>
+
+<p>I used raw HTML5 geolocation, and will package that as a Meteor plugin.</p>
+
+<p>I used Google Maps API v3 to drive a map live.  It's too custom to package in its current form, but it's a good example of how to avoid Google Maps having 0 height, flickering when Meteor re-renders, the map showing all gray and a few other gotchas that make integration annoying. </p>
+
+<h3>
+<a name="review-notes" class="anchor" href="#review-notes"><span class="octicon octicon-link"></span></a><a name="review_notes"></a>Review Notes</h3>
+
+<p>I found that Meteor is stable, has an active community, and great tool chain support.  I was able to complete the vast majority of this project, from scratch, over a weekend.  It uses things you probably already know, or all well documented, like <a href="http://handlebarsjs.com/">Handlebars</a>, <a href="http://underscorejs.org/">Underscore</a>, <a href="http://jquery.com/">jQuery</a> and <a href="https://www.mongodb.org/">mongoDB</a>.  You get javascript on both the server and client side, so your front-end developers can contribute to the back-end, or at least read the code.  Making packages is easy with <a href="https://atmosphere.meteor.com/">Atmosphere</a>, which has helped get some some useful 3rd party tools integrated (like Bootstrap<a href="http://getbootstrap.com/">bs3</a>).  It's reactive first, which means you don't need to seek out javascript developers who have already been through the pain of building real webapps, and not just session machines that push templates from Java or PHP. Webapps are reactive, and there's some learning curve in terms of structuring things.  Meteor helps with that A LOT, and for that it's worth learning, even if you're firmly planted in a Python/Django shop.</p>
+
+<h4>
+<a name="coming-up-to-speed" class="anchor" href="#coming-up-to-speed"><span class="octicon octicon-link"></span></a>Coming up to speed</h4>
+
+<p>New javascript/node programmers should be able to come up to speed quickly.  Organization is open and light, which is a trade-off.  Today, it means you don't need Meteor experts.  Longer term it means every project will have a different organization, which will burn time bringing new people on board, or (re)documenting your architecture.</p>
+
+<p>To minimize this, it's a good idea to package pieces of your app as real packages, even if you don't share them openly.  This will help impose some natural organization as your app grows. Isolated tests become easier too.</p>
+
+<h4>
+<a name="invisible-magic" class="anchor" href="#invisible-magic"><span class="octicon octicon-link"></span></a>Invisible Magic</h4>
+
+<p>The heart of Meteor is a systematic mapping of mongoDB collections to handlebars, using invisible magic.  I'm never a fan of invisible magic in platforms, but it has strong benefits in getting started quickly.  Meteor exposes things like <a href="http://handlebarsjs.com/">Handlebars</a> perfectly, but completely hides things like <a href="https://github.com/sockjs">SockJS</a>.  That's normally fine.  But use jQuery in a Template you'll see that there are "wrong" things and "right" things to do that aren’t obvious. It appears much of this will get addressed by release 1, but some is inherent in the design.</p>
+
+<h4>
+<a name="data-models" class="anchor" href="#data-models"><span class="octicon octicon-link"></span></a>Data Models</h4>
+
+<p>Reactive systems need to finely segment data to make targeted updates at the clients.  Meteor is no exception.  For instance, a <code>Session</code> object is given to make reactive data NOT synced between clients.  It's not really good for Session stuff that isn't reactive, so don't do that--you'll inadvertently trigger updates elsewhere.  If you aren't careful to specify simple enough data to use <code>Session.equals()</code>, you'll trigger many reactive updates.  For instance, the <a href="http://docs.meteor.com/#session_equals">docs</a> point out that if you consistently use</p>
+
+<pre><code>Session.get("key") === value
+</code></pre>
+
+<p>you will trigger a reactive update on every Template function that uses that pattern when any Session key updates.  Instead use</p>
+
+<pre><code>Session.equals("key", value)
+</code></pre>
+
+<p>which will only update Template functions that share the same key.</p>
+
+<p>This isn't extensible in the following case (where Geolocation is used instead of Session):</p>
+
+<pre><code>  var location = Geolocation.findOne();
+  if( location !== undefined &amp;&amp; 'alert' in location ) {
+    return location.alert;
+  }
+  return false;
+</code></pre>
+
+<p>So making individual atomic keys is better, which ultimately means using flat data architectures.
+This is generally true for reactive programming, and not expensive with almost any NoSQL backend.  But most examples of Meteor over use Session because it's convenient.  So those parts won't necessarily scale or work well together. And packages are free to pollute the Session name space.</p>
+
+<p>The solution is fine-grain control over the rendering, which requires some handlebars black magic (like #isolate, #constant).  A declarative method for stating dependencies would require overhead and initial learning, but would go a long way to avoiding the slow expertise you need to develop when tripping over the best-practices you don't know yet.</p>
+
+<h4>
+<a name="service-oriented-architecture" class="anchor" href="#service-oriented-architecture"><span class="octicon octicon-link"></span></a>Service-Oriented Architecture</h4>
+
+<p><a href="http://en.wikipedia.org/wiki/Service-oriented_architecture">SOA</a> for webapps over websockets is a topic unto itself.  As a full-stack tool, Meteor will require some code to map 3rd party APIs to reactive sources.  It was easy enough to use Google Maps V3 API, and you can use Meteor.http() for other RESTful calls.  With the support behind Meteor, I expect many packages will be wrapped in a useful way.  For now, the full benefit is only seen by fork-lifting the results of RESTful calls into a Collection.  This is a level of indirection, requires some server-side code that will become boilerplate (unless you call from the client and overload Session), and yields a light performance hit.</p>
+
+<p>You wouldn't really use Meteor to create an SOA API, it’s not for that.</p>
+
+<h4>
+<a name="testing" class="anchor" href="#testing"><span class="octicon octicon-link"></span></a>Testing</h4>
+
+<p>As a rapid prototype, I didn't use <a href="http://en.wikipedia.org/wiki/Test-driven_development">Test Driven Development</a>.  My philosophy on that is: learn by doing, build by testing. This was a learning exercise.  But to build a product I'm a big advocate of TDD.  To package the geolocation stuff, I'd start with the test cases and rebuild it robustly.</p>
+
+<p>There are a few Meteor test tools.  The most promising looks like <a href="http://arunoda.github.io/laika/">Laika</a>, which uses <a href="http://phantomjs.org/">PhantomJS</a> for client manipulation.  You can use <a href="http://visionmedia.github.io/mocha/">Mocha</a> and all your favorite node tools, but Laika duplicates a lot of the magic Meteor runs for you, so you don’t just get a ton of undeclared variable errors.</p>
+
+<h3>
+<a name="why-i-didnt-use-coffeescript" class="anchor" href="#why-i-didnt-use-coffeescript"><span class="octicon octicon-link"></span></a>Why I didn't use CoffeeScript</h3>
+
+<p>Simply put, there are more Javascript programmers than CoffeeScript programmers.  I like hiring and working with programmers who read the code they're using, so it's more helpful to write in language more people can read.  I don't have a strong opinion of which is "best"--there will be both, and Meteor works with both.</p>
+
+<h2>
+<a name="conclusion" class="anchor" href="#conclusion"><span class="octicon octicon-link"></span></a>Conclusion</h2>
+
+<p>For now, learning Meteor is great to see how reactive programming of webapps works in the real world.  It’s also good for small projects.  It’s new, but the odds of it getting to production quality look very good, so it’s worth getting some skills together now.</p>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/jimm101/PickMeUp/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/jimm101/PickMeUp/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/jimm101/PickMeUp"></a> is maintained by <a href="https://github.com/jimm101">jimm101</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
